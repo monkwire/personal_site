@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Star Realms Authority Tracker</title>
+    <link rel="stylesheet" href="/public/styles/app.css">
+    <link rel="stylesheet" href="/public/styles/authority_tracker.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100&family=Space+Grotesk:wght@500&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <%- include("./nav") %>
+
+        <div>
+            <div>
+                <h1>Star Realms Authority Tracker</h1>
+            </div>
+            <div id="scores">
+                <div class="playerBox">
+                    <div class="characterSelectBox hidden">
+                        <span class="characterBox button base"></span>
+                        <span class="characterBox button alignment"></span>
+                        <span class="characterBox button alliance"></span>
+                        <span class="characterBox button coalition"></span>
+                        <span class="characterBox button pact"></span>
+                        <span class="characterBox button union"></span>
+                        <span class="characterBox button unity"></span>
+                        <span class="characterBox button lostFleet"></span>
+                        <span class="characterBox button base"></span>
+                    </div>
+                    <div class="playerScoreBox">
+                        <div class="h2Div">
+                            <label for="playerOneInput">
+                                <h2>Player 1</h2>
+                            </label>
+                        </div>
+                        <div class="pointsBox">
+                            <div class="pointDisplay">
+                                <label for="playerOneScoreInput"></label>
+                            </div>
+                            <div>Points</div>
+                        </div>
+                        <div class="buttonsDiv">
+                            <div class="dec button">-</div>
+                            <div class="inc button">+</div>
+                        </div>
+                    </div>
+                </div>
+                <div id="resetDiv">
+                    <div id="charSelectButton" class="button">Change
+                        Commanders</div>
+                    <div id="resetButton" class="button">Reset</div>
+                </div>
+                <div class="playerBox">
+                    <div class="characterSelectBox hidden">
+                        <span class="characterBox button base"></span>
+                        <span class="characterBox button alignment"></span>
+                        <span class="characterBox button alliance"></span>
+                        <span class="characterBox button coalition"></span>
+                        <span class="characterBox button pact"></span>
+                        <span class="characterBox button union"></span>
+                        <span class="characterBox button unity"></span>
+                        <span class="characterBox button lostFleet"></span>
+                        <span class="characterBox button base"></span>
+                    </div>
+                    <div class="playerScoreBox">
+                        <div class="h2Div">
+                            <label for="playerTwoInput">
+                                <h2>Player 2</h2>
+                            </label>
+                        </div>
+                        <div class="pointsBox">
+                            <div class="pointDisplay">
+                                <label for="playerTwoScoreInput"></label>
+                            </div>
+                            <div>Points</div>
+                        </div>
+                        <div class="buttonsDiv">
+                            <div class="dec button">-</div>
+                            <div class="inc button">+</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <input class="playerNameInput playerInput" type="text" id="playerOneInput" name="playerOneInput">
+        <input class="playerNameInput playerInput" type="text" id="playerTwoInput" name="playerTwoInput">
+        <input class="playerScoreInput playerInput" type="number" id="playerOneScoreInput" name="playerOneScoreInput">
+        <input class="playerScoreInput  playerInput" type="number" id="playerTwoScoreInput" name="playerTwoScoreInput">
+        <script src="/public/scripts/authority_tracker.js"></script>
+        <script src="/public/scripts/nav_bar.js"></script>
+</body>
+
+</html>

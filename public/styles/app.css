@@ -1,0 +1,119 @@
+body {
+    background-color: lightgray;
+    font-family: "Ubuntu", sans-serif;
+    margin-left: 1rem;
+}
+
+#synthBanner {
+    height: 10em;
+    background-image: url("https://images.unsplash.com/photo-1528724747537-1634153aa3c8?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80");
+}
+
+ul {
+    list-style: none;
+}
+
+nav {
+    all: initial;
+    display: flex;
+    justify-content: right;
+    flex-direction: row;
+    flex-wrap: wrap;
+    background:rgb(109, 109, 109);
+    font-size: 1em;
+    font-family: fredoka, sans-serif;
+    border: none;
+    margin: none;
+    margin-left: none;
+}
+
+nav span a {
+    text-decoration: none;
+    color: rgb(219, 219, 219);
+}
+
+nav span a:hover {
+    color: rgb(255, 255, 255);
+    font-weight: 600;
+}
+
+a {
+    text-decoration: none;
+}
+
+nav ul, nav ul li ul {
+    list-style: none;
+    margin: 0;
+    padding-left: 0;
+}
+
+nav ul li, nav ul li ul li {
+    color: #fff;
+    display: block;
+    float: left;
+    padding: 0rem;
+    position: relative;
+    text-decoration: none;
+    box-sizing: border-box;
+    width: 6.75em;
+}
+
+
+
+
+nav ul li a div, nav ul li ul li a div {
+    color: #fff;
+}
+
+nav ul li:hover, nav ul li ul li:hover {
+    background: rgb(70, 70, 70);
+    cursor: pointer;
+}
+
+nav ul li ul {
+    background: rgb(31, 31, 31);
+    visibility: hidden;
+    opacity: 0;
+    width: 100%;
+    position: absolute;
+    margin-top: 0rem;
+    left: 0;
+    display: none;
+}
+
+nav ul li:hover > ul {
+visibility: visible;
+opacity: 1;
+display: block;
+}
+
+nav ul li ul li {
+clear: both;
+width: 100%;
+}
+
+.noselect {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+a div {
+    padding: 0.75rem;
+}
+
+nav ul li a div {
+    border: none;
+    display: default;
+    margin: default;
+    background-color: inherit;
+    margin-bottom: 0;
+
+}
+
+.skill {
+    display: flex;
+    align-content: space-between;
+}

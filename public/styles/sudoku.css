@@ -1,0 +1,126 @@
+/* light_grey: #dcdcdd;
+   grey: #c5c3c6;
+   dark_grey: #46494c;
+   dark_blue: #4c5c68;
+   blue: #1985a1;
+*/
+
+body {
+    background-color: #46494c; /*Dark Grey*/
+}
+
+h1, button {
+    font-family: "Fredoka", sans-serif;
+    color: #1985a1; 
+}
+
+button {
+    background-color: #1985a1;
+    color: #dadcdd;
+    border-style: none;
+    margin-right: 0.5rem;
+
+}
+button:hover {
+    color: #1985a1;
+    background-color: #dadadd;
+    cursor: pointer;
+}
+a {
+    color: inherit
+}
+
+#menus {
+    justify-content: space-around;
+    width: 50%;
+    height: auto;
+    margin: auto;
+    margin-top: inherit;
+    height: 2rem;
+    display: flex;
+    align-items: center;
+    background-color: #4c5c68;
+
+}
+.cell {
+    height: 50px;
+    width: 50px;
+    background-color: #c5c3c6;
+    border: .5px solid #46494c;
+    color: #273036;
+    text-align: center;
+    font-size: 2.5em;
+    user-select: none;
+    font-family: "Fredoka", sans-serif;
+    font-weight: 300;
+}
+
+#board {
+    display : grid;
+    grid-template-columns:repeat(9, 50px) ;
+    grid-template-rows: repeat(9, 50px);
+    margin: auto;
+}
+
+#boardContainer {
+    display: flex;
+}
+
+
+.cell:hover {
+    background-color: #273036;
+    cursor: pointer;
+    color: #c5c3c6;
+}
+
+
+
+.selectedCrossHair {
+    background-color: #1985a1;
+    color: #c5c3c6;
+}
+
+.selectedVal {
+    font-weight: 500;
+    color: #4c5c68;
+}
+
+.selected {
+    opacity: 60%;
+    background-color: #1985a1;
+    color: #c5c3c6;
+}
+.unlocked {
+    font-weight: 400;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.pencilVisible {
+    display : grid;
+    grid-template-columns: repeat(3, auto);
+    grid-template-rows: repeat(3, auto);
+
+}
+
+.subCell {
+    font-size: xx-small;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.incorrectEntry {
+    background-color: rgba(247, 148, 148, 0.623);
+
+}
+
+.incorrectSection {
+    background-color: rgba(240, 206, 206, 0.274);
+}
+
+.hidden {
+    display: none;
+}

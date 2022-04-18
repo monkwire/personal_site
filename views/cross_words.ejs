@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cross-Words</title>
+    <link rel="stylesheet" href="/public/styles/app.css">
+    <link rel="stylesheet" href="/public/styles/cross_words.css">
+
+</head>
+<body>
+    <%- include("./nav") %>
+    <h1>Cross-words Game</h1>
+    <div><p>This is a game I desiged myself. The goal of the game is fill the 5x5 grid with valid words given a word bank. This game is very much a work in progress. If no words are loaded, please reload the page.</p>
+    <p>The Goal of the game is to fill the 5x5 grid such that all rows and all columns spell an English word. Input words by dragging horizontal words from the word bank.</p></div>
+    <div id="rawPuzzle"><%= puzzle %></div>
+    <div id="rawBank"><%= bank %></div>
+    <div id="wordBank"></div>
+    <div id="grid"></div>
+    <div id="menus"><button id="reset">Reset</button><button id="hint">Hint</button><button id="solve">Solve</button><button><a href="/cross_words/index">New Puzzle</a></button></div>
+    <script src="/public/scripts/cross_words.js"></script>
+    <script src="/public/scripts/nav_bar.js"></script>
+</body>

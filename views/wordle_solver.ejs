@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wordle Solver</title>
+    <link rel="stylesheet" href="/public/styles/app.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bitter:wght@800&display=swap" rel="stylesheet"> 
+    <link rel="stylesheet" href="/public/styles/wordle_solver.css">
+</head>
+<body>
+    <%- include("./nav") %>
+    <h1>Wordle Solver</h1>
+    <div><p>The wordle solver returns a list of viable words given any number of constraints. More common words are highlighted in green. These are more likely solutions. The solver will only return words after a command has been selected. The solver uses a dynamic word bank, meaning that until the word bank is reset, all requests will modify the pool from which subsequent words are pulled. The "include" and "exclude" commands take at least one letter. These commands instruct the solver to retrieve words that either include or exclude certain letters. The "match place" and "match place exclude" commands take exactly five characters. If the solver is given the wrong number of characters, it will ignore the request, and return the current word bank. Match place returns all words from the word bank in which the location of each letter matches the location of the letters in the user input. Asterisks and underscores can be used as placeholders for letters not yet known; no other characters are valid placeholders. Match place exclude functions in the same way as match place, except that instead of returning words with letters that match place, the function returns words that include the inputed letters only if they do not match place.</p></div>
+
+    <div><form action="none"><input type="text" name="userInput"> <button id="getWordsButton">Get words</button></form><button id="reset">Reset</button></div>
+    <div id="buttons"><button id="exclude">Exclude</button><button id="include">Include</button><button id="matchPlace">Match Place</button><button id="matchPlaceExclude">Match Place Exclude</button></div>
+    <div id="commonWordBox">Common words will appear here.</div>
+    <div id="wordBox">All words will appear here.</div>
+    <script src="/public/scripts/wordle_solver.js"></script>
+    <script src="/public/scripts/nav_bar.js"></script>
+</body>
+</html>

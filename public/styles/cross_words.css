@@ -1,0 +1,84 @@
+body {
+    background-color: #333533;
+}
+p {
+    color: #cfdbd5;
+}
+h1 {
+    color: #f5cb5c;
+}
+.cell {
+    border: 0.5mm solid #333333;
+    background-color: #242423;
+    color: rgb(68, 68, 68);
+    box-sizing: border-box;
+    font-size: 50px;
+    padding: 10px;
+    text-align: center;
+    user-select: none;
+    color: #f5cb5c;
+
+}
+
+#puzzleGrid {
+    box-sizing: border-box;
+    display: grid;
+    grid-template-columns: repeat(5, 60px);
+    grid-template-rows: repeat(5, 60px);
+    margin: auto;
+    margin-top: 10px;
+    width: 300px;
+    height: 300px;
+}
+
+#wordBank, #menus {
+    color: #f5cb5c;
+    background-color: #242423;
+    border-radius: 4px;
+    margin: 5px;
+    padding: 5px;
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+
+}
+
+#menus {
+    justify-content: space-around;
+    width: 300px;
+    margin: auto;
+    margin-top: inherit;
+}
+button {
+    background-color: #333533;
+    color: #f5cb5c;
+    border: none;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+button a {
+    color: inherit;
+}
+
+button:hover {
+    cursor: pointer;
+}
+.selectableWord {
+    color: #f5cb5c;
+    font-weight: 700;
+    user-select: none;
+    cursor: pointer;
+}
+
+.selectableWord:ondrag {
+    color: green;
+}
+.selected {
+    background-color: darkslateblue(255, 250, 205, 0.295);
+}
+
+.victory {
+    color: #333333;
+    background-color: #f5cb5c;
+}

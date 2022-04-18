@@ -1,0 +1,111 @@
+body {
+    font-family: 'Clear Sans', 'Helvetica Neue', Arial, sans-serif;
+    background-color: #212121;
+    color: #fff;
+}
+
+h1 {
+    font-family: 'Bitter', serif;
+    font-weight: 800;
+    text-align: center;
+}
+
+p {
+    padding: 1rem;
+    padding-left: 1px;
+    text-justify: left;
+    text-align: justify;
+}
+.selected {
+    background-color: #3a3a3c;
+}
+
+#buttons {
+    margin-bottom: 1rem;
+    display: flex;
+
+}
+
+div {
+    margin-bottom: 1rem;
+}
+
+button {
+    margin: 1px;
+    background-color: #86888a;
+    color: #fff;
+    border-style: hidden;
+    height: 4rem;
+    width: 4rem;
+
+}
+
+button:hover {
+    background-color: #565758;
+    cursor: pointer;
+}
+
+#getWordsButton {
+    background-color: #6aaa64;
+    height: 1.5rem;
+    width: auto;
+}
+
+#getWordsButton:hover {
+    background-color: #6aaa64cb;
+}
+
+
+#reset {
+    background-color: #b59f3b;
+    height: 1.5rem;
+    width: 3.5rem;
+}
+
+#reset:hover {
+    background-color: #b59f3bd8;
+}
+
+input {
+    height: 1.5rem;
+    box-sizing: border-box;
+    border-style: hidden;
+    text-transform: uppercase;
+    background-color: #565656;
+    color: #fff; 
+}
+
+input:focus {
+    outline: none;
+    background-color: #3a3a3c;
+}
+form {
+    display: inline;
+    margin: 1px;
+}
+
+#wordBox, #commonWordBox {
+    background-color: #3a3a3c;
+    color: #d8d8d8d8;
+    display: flex;
+    height: auto;
+    flex-wrap: wrap;
+    box-sizing: border-box;
+    padding: 0.5rem;
+    margin: 1rem;
+    margin-left: 0px;
+
+}
+
+.displayWord {
+    margin: 3px;
+    font-weight: 700;
+    padding-left: 4px;
+    padding-right: 4px;
+    font-weight: 400;
+}
+
+.common {
+    background-color: #538d4e;
+    color: #fff;
+}
