@@ -17,17 +17,17 @@ app.set("view engine", "ejs");
 
 app.get("/", (req, res) => {
     console.log(req)
-    const title = "Home"
+    const title = "Clide Stefani: Home"
     res.render("home", { title });
 })
 
 app.get("/projects", (req, res) => {
-    const title = "Projects"
+    const title = "Clide Stefani: Projects"
     res.render("projects", { title })
 })
 
 app.get("/resume", (req, res) => {
-    const title = "Resume"
+    const title = "Clide Stefani: Resume"
     res.render("resume", { title })
 })
 

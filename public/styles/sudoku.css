@@ -1,17 +1,10 @@
-/* light_grey: #dcdcdd;
-   grey: #c5c3c6;
-   dark_grey: #46494c;
-   dark_blue: #4c5c68;
-   blue: #1985a1;
-*/
 
 body {
-    background-color: #46494c; /*Dark Grey*/
+    background-color: #333533;
 }
 
 h1, button {
-    font-family: "Fredoka", sans-serif;
-    color: #1985a1; 
+    color: #f5cb5c; 
 }
 
 button {
@@ -39,15 +32,15 @@ a {
     height: 2rem;
     display: flex;
     align-items: center;
-    background-color: #4c5c68;
+    background-color: #24292d;
 
 }
 .cell {
     height: 50px;
     width: 50px;
-    background-color: #c5c3c6;
-    border: .5px solid #46494c;
-    color: #273036;
+    background-color: #cfdbd5;
+    border: .5px solid #333533;
+    color: #333533;
     text-align: center;
     font-size: 2.5em;
     user-select: none;
@@ -68,27 +61,26 @@ a {
 
 
 .cell:hover {
-    background-color: #273036;
+    background-color: #333533;
     cursor: pointer;
-    color: #c5c3c6;
+    color: #f5cb5c;
 }
 
 
 
 .selectedCrossHair {
-    background-color: #1985a1;
+    background-color: #242423;
     color: #c5c3c6;
 }
 
 .selectedVal {
     font-weight: 500;
-    color: #4c5c68;
+    color: #1985a1;
 }
 
 .selected {
-    opacity: 60%;
-    background-color: #1985a1;
-    color: #c5c3c6;
+    color: #f5cb5c;
+    background-color: black;
 }
 .unlocked {
     font-weight: 400;
