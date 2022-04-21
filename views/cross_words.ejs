@@ -12,8 +12,10 @@
 <body>
     <%- include("./nav") %>
     <h1>Cross-words Game</h1>
-    <div><p>This is a game I desiged myself. The goal of the game is fill the 5x5 grid with valid words given a word bank. This game is very much a work in progress. If no words are loaded, please reload the page.</p>
-    <p>The Goal of the game is to fill the 5x5 grid such that all rows and all columns spell an English word. Input words by dragging horizontal words from the word bank.</p></div>
+    <div><p>This is a game I desiged myself. The goal of the game is fill the 5x5 grid such that all columns (read top to bottom) display a valid English word. A correct solution should look like a filled in cross-word puzzle.</p>
+    <p>The word bank below contains ten words, but you will only use five of them to complete the puzzle. Drag and drop words from the word bank onto to board horizontally. No word can be used multiple times. If you try to drag a word that already exists on the board, the game will simply move the existing word to it's new place.</p>
+    <p>While the number of words in the word bank is > 5, the hint button will remove a word that is not part of the solution. If there are only five words in the word bank, the hint button will correctly place a word.</p>
+    <p>When the correct solution is found, the game will briefly flash.</p>
     <div id="rawPuzzle"><%= puzzle %></div>
     <div id="rawBank"><%= bank %></div>
     <div id="wordBank"></div>
