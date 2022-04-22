@@ -1,6 +1,6 @@
 body {
     font-family: 'Clear Sans', 'Helvetica Neue', Arial, sans-serif;
-    background-color: #212121;
+    background-color: #121213;
     color: #fff;
 }
 
@@ -16,28 +16,10 @@ p {
     text-justify: left;
     text-align: justify;
 }
-.selected {
-    background-color: #3a3a3c;
-}
 
-#buttons {
-    margin-bottom: 1rem;
-    display: flex;
-
-}
 
 div {
     margin-bottom: 1rem;
-}
-
-button {
-    margin: 1px;
-    background-color: #86888a;
-    color: #fff;
-    border-style: hidden;
-    height: 4rem;
-    width: 4rem;
-
 }
 
 button:hover {
@@ -45,44 +27,23 @@ button:hover {
     cursor: pointer;
 }
 
-#getWordsButton {
-    background-color: #6aaa64;
+button {
+    background-color: #d8d8d8;
     height: 1.5rem;
     width: auto;
-}
-
-#getWordsButton:hover {
-    background-color: #6aaa64cb;
-}
-
-
-#reset {
-    background-color: #b59f3b;
-    height: 1.5rem;
-    width: 3.5rem;
-}
-
-#reset:hover {
-    background-color: #b59f3bd8;
-}
-
-input {
-    height: 1.5rem;
-    box-sizing: border-box;
     border-style: hidden;
-    text-transform: uppercase;
-    background-color: #565656;
-    color: #fff; 
+    margin-right: 0.75rem;
 }
 
-input:focus {
-    outline: none;
-    background-color: #3a3a3c;
+button:hover {
+    background-color: #939598;
 }
-form {
-    display: inline;
-    margin: 1px;
+
+#menus {
+    display: flex;
+    justify-content: flex-start;
 }
+
 
 #wordBox, #commonWordBox {
     background-color: #3a3a3c;
@@ -108,4 +69,83 @@ form {
 .common {
     background-color: #538d4e;
     color: #fff;
+}
+
+.word {
+    width: 100%;
+    margin: 0;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.cell, .swab {
+    width: 62px;
+    height: 62px;
+    border: 2px solid #3a3a3c;
+    margin: 0;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    vertical-align: middle;
+    box-sizing: border-box;
+    text-transform: uppercase;
+    font-size: 24px;
+}
+
+.cell:hover {
+    border-color: #fff;
+    cursor: pointer;
+}
+
+.selected {
+    border-color: #f5793a;
+}
+
+#board {
+    width: 350px;
+    height: 420px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    margin: auto;
+}
+
+#palette {
+    height: 288px;
+    width: 72px;
+    flex-wrap: wrap;
+    display: flex;
+    justify-content: space-evenly;
+    margin: none;
+    align-content: space-evenly;
+}
+
+.swab:hover {
+    border: 0.5mm solid #fff;
+    cursor: pointer;
+}
+
+
+.swabGreen {
+    background-color: #6aaa64;
+}
+
+.swabYellow {
+    background-color: #b59f3b;
+}
+
+.swabGrey {
+    background-color: #3a3a3c;
+}
+
+.swabBlack {
+    background-color: #121213;
+}
+
+#boardContainer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: row;
 }
