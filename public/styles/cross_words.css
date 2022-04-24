@@ -3,6 +3,11 @@ body {
 }
 p {
     color: #cfdbd5;
+    max-width: 1000px;
+    text-align: justify;
+    width: 90%;
+    margin: auto;
+    margin-bottom: 10px;
 }
 h1 {
     color: #f5cb5c;
@@ -37,11 +42,13 @@ h1 {
     color: #f5cb5c;
     background-color: #242423;
     border-radius: 4px;
-    margin: 5px;
+    margin: auto;
+    margin-bottom: 5px;
     padding: 5px;
     display: flex;
     justify-content: space-evenly;
     flex-wrap: wrap;
+    max-width: 900px;
 
 }
 
@@ -49,7 +56,7 @@ h1 {
     justify-content: space-around;
     width: 300px;
     margin: auto;
-    margin-top: inherit;
+    margin-top: 10px;
 }
 button {
     background-color: #333533;
@@ -71,6 +78,10 @@ button:hover {
     font-weight: 700;
     user-select: none;
     cursor: pointer;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-top: 5px;
+    margin-bottom: 5px;
 }
 
 .selectableWord:ondrag {
@@ -83,4 +94,12 @@ button:hover {
 .victory {
     color: #333333;
     background-color: #f5cb5c;
+}
+
+@media screen and (min-width: 1000px) {
+    h1 {
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;
+    }
 }

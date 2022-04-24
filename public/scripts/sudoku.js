@@ -296,6 +296,10 @@ function resetPuzzle() {
 document.body.addEventListener("click", function (e) {
     if (e.target.classList.contains("cell")) {
         selectCell(e.target)
+    } else if (e.target.classList.contains("numButton")) {
+        selectCell(activeCell)
+    } else if (e.target.id = "pencilToggle") {
+        selectCell(activeCell)
     } else if (e.target.classList.contains("pencilCell")) {
         selectCell(e.target.parentElement.parentElement)
     } else {
@@ -410,6 +414,7 @@ function loadNumberPad() {
                     markPencil(activeCell, i)
                 }
             checkAll()
+            highlightMatching()
             }
         })
         numberButtons.append(numButton)

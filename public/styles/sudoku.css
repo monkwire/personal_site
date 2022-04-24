@@ -162,6 +162,7 @@ a {
         justify-content: space-evenly;
         height: 5vw;
         padding: 4px;
+        align-items: center;
     }
 
     .numButton {
