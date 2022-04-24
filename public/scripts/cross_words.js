@@ -220,7 +220,6 @@ solveButton.addEventListener("click", function () {
 
 let randomIndex = Math.floor(Math.random() * SOLUTION.length);
 
-console.log(randomIndex)
 while (SOLUTION[randomIndex] === WORKING_GRID[randomIndex]) {
     randomIndex = Math.floor(Math.random() * SOLUTION.length)
 }
