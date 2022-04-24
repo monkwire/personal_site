@@ -342,7 +342,6 @@ function getResults() {
 
 getWordsButton = document.querySelector("#getWordsButton");
 getWordsButton.addEventListener("click", function() {
-    console.log("get words pressed")
     getResults()})
 
 clearGridButton = document.querySelector("#clear")

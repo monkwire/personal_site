@@ -1,118 +1,96 @@
-
 body {
-    background-color: #333533;
-}
-
-h1, button {
-    color: #f5cb5c; 
-}
-
-button {
-    background-color: #1985a1;
-    color: #dadcdd;
-    border-style: none;
-    margin-right: 0.5rem;
-
-}
-button:hover {
-    color: #1985a1;
-    background-color: #dadadd;
-    cursor: pointer;
-}
-a {
-    color: inherit
-}
-
-#menus {
-    justify-content: space-around;
-    width: 50%;
-    height: auto;
-    margin: auto;
-    margin-top: inherit;
-    height: 2rem;
-    display: flex;
-    align-items: center;
-    background-color: #24292d;
-
-}
-.cell {
-    height: 50px;
-    width: 50px;
-    background-color: #cfdbd5;
-    border: .5px solid #333533;
-    color: #333533;
-    text-align: center;
-    font-size: 2.5em;
-    user-select: none;
-    font-family: "Fredoka", sans-serif;
-    font-weight: 300;
+    background-color: #5E807F;
 }
 
 #board {
-    display : grid;
-    grid-template-columns:repeat(9, 50px) ;
-    grid-template-rows: repeat(9, 50px);
+    height: 500px;
+    width: 500px;
+    display: flex;
+    flex-direction: column;
     margin: auto;
 }
 
-#boardContainer {
+.row {
     display: flex;
+    width: 100%;
+    border: none;
 }
 
+.pencilContainer {
+    display: flex;
+    flex-wrap: wrap;
+    grid-template-columns:repeat(3, auto) ;
+    grid-template-rows: repeat(3, auto); 
+    font-size: xx-small;
+    padding: 0px;
+    height: 100%;
+    width: 100%;
+    margin: 0px;
+
+}
+
+.pencilCell {
+    font-size: xx-small;
+    width: 33.3333%;
+    height: 33.3333%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 0;
+    user-select: none;
+}
+
+.cell {
+    background-color: #DEE5E5;
+    color: #17B890;
+    border: 1px solid  #5E807F;
+    height: 50px;
+    flex-grow: 1;
+    flex-basis: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2.5em;
+}
 
 .cell:hover {
-    background-color: #333533;
     cursor: pointer;
-    color: #f5cb5c;
+    background-color: #9DC5BB;
+
 }
 
-
-
-.selectedCrossHair {
-    background-color: #242423;
-    color: #c5c3c6;
+.cell:nth-child(1) {
+    border-left: 3px solid #5E807F;
 }
 
-.selectedVal {
-    font-weight: 500;
-    color: #1985a1;
+.cell:nth-child(3n) {
+    border-right: 3px solid #5E807F;
+}
+.row:nth-child(3n) {
+    border-bottom: 2px solid #5E807F;
+}
+
+.row:nth-child(1){
+    border-top: 2px solid 5E807F;
+}
+
+.matching {
+    font-weight: bolder;
+}
+
+.locked {
+    color: #082D0F;
 }
 
 .selected {
-    color: #f5cb5c;
-    background-color: black;
-}
-.unlocked {
-    font-weight: 400;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
+    background-color: #9DC5BB;
 }
 
-.pencilVisible {
-    display : grid;
-    grid-template-columns: repeat(3, auto);
-    grid-template-rows: repeat(3, auto);
-
+.incorrect {
+    color: #F49E4C;
 }
 
-.subCell {
-    font-size: xx-small;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.incorrectEntry {
-    background-color: rgba(247, 148, 148, 0.623);
-
-}
-
-.incorrectSection {
-    background-color: rgba(240, 206, 206, 0.274);
-}
-
-.hidden {
-    display: none;
+.victory {
+    background-color: #17B890;
+    color: #DEE5E5;
 }
