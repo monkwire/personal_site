@@ -149,3 +149,40 @@ button:hover {
     justify-content: space-between;
     flex-direction: row;
 }
+
+#keyboard {
+    display: none;
+}
+
+@media screen and (max-width: 500px) {
+    #keyboard {
+        display: block;
+    }
+
+    #keyboard button {
+        font-weight: 700;
+        background-color: #939598;
+        color: #d8d8d8;
+        height: 10vw;
+        width: 8vw;
+        margin-right: 3px;
+        margin-left: 3px;
+        text-transform: uppercase;
+        border-radius: 4px;
+    }
+
+    #keyboard .row {
+        display: flex;
+        justify-content: center;
+    }
+
+    #boardContainer {
+        flex-direction: column;
+    }
+
+    #palette {
+        flex-direction: row;
+        width: 288px;
+        height: 72px;
+    }
+}

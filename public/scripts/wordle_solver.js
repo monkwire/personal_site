@@ -27,7 +27,7 @@ function updateDisplay() {
             commonDisplayWord.classList.add("displayWord", "common")
             commonWordBox.append(commonDisplayWord)
         }
-        
+
         wordBox.append(displayWord)
     }
     if (wordBox.innerText.length === 0) {
@@ -48,7 +48,7 @@ function runCommand(command) {
     } else {
         validWords = command(allFiveLetterWords, userInput)
     }
-    updateDisplay() 
+    updateDisplay()
 }
 
 // Exclude
@@ -157,12 +157,6 @@ function clearSelections() {
     }
 }
 
-document.body.addEventListener("click", function (e) {
-    if (e.target.classList.length === 0) {
-        selectedCell = null;
-        clearSelections();
-    }
-})
 
 
 function buildBoard(n_words, l_words) {
@@ -254,7 +248,7 @@ document.addEventListener("keydown", function (e) {
             selectNextCell(selectedCell);
         } else if (e.key === "ArrowLeft") {
             selectPrevCell(selectedCell);
-        } else if (e.key ==="ArrowUp") {
+        } else if (e.key === "ArrowUp") {
             if (selectedCell.parentElement.previousElementSibling != null) {
                 last = selectedCell;
                 clearSelections();
@@ -304,7 +298,8 @@ function buildColorPalette() {
 
 buildBoard(6, 5)
 buildColorPalette()
-
+selectedCell = allCells[0]
+selectedCell.classList.add("selected")
 
 
 function getResults() {
@@ -312,7 +307,7 @@ function getResults() {
     let matchPlaceLetters = new Array(5).fill("*");
     let goodLetters = new Array();
     let badLetters = new Array();
-    
+
     for (let cell of allCells) {
         if (cell.classList.contains("swabGreen")) {
             matchPlaceLetters[getCellIndex(cell)] = cell.innerText
@@ -341,14 +336,46 @@ function getResults() {
 }
 
 getWordsButton = document.querySelector("#getWordsButton");
-getWordsButton.addEventListener("click", function() {
-    getResults()})
+getWordsButton.addEventListener("click", function () {
+    getResults()
+})
 
 clearGridButton = document.querySelector("#clear")
-clearGridButton.addEventListener("click", function() {
+clearGridButton.addEventListener("click", function () {
     for (let cell of allCells) {
         clearSwabs(cell)
         cell.innerText = ""
         selectedCell = null
     }
 })
+
+// Mobile keyboard configuration
+
+
+const keyboard = document.querySelector("#keyboard")
+
+for (let keyRow of keyboard.children) {
+    for (let keyButton of keyRow.children) {
+        keyButton.addEventListener("click", function (e) {
+        console.log(e)            
+            if (keyButton.id === "enterButton") {
+                getResults()
+            } else if (keyButton.id === "backspaceButton") {
+                clearSwabs(selectedCell)
+                if (selectedCell.innerText === "") {
+                    selectPrevCell(selectedCell)
+                    selectedCell.innerText = "";
+                    clearSwabs(selectedCell)
+                } else {
+                    selectedCell.innerText = "";
+                    clearSwabs(selectedCell);
+                    selectPrevCell(selectedCell);
+                }
+            } else {
+                selectedCell.innerText = e.target.innerText.toUpperCase();
+                selectNextCell(selectedCell);
+
+        }
+    })
+}
+}
