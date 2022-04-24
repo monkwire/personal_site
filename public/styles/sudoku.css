@@ -94,3 +94,78 @@ body {
     background-color: #17B890;
     color: #DEE5E5;
 }
+
+#menus {
+    margin: auto;
+    width: 500px;
+    display: flex;
+    background-color: #082D0F;
+    justify-content: space-evenly;
+    border-radius: 2px;
+    margin-bottom: 6px;
+}
+
+button {
+    border-style: none;
+    color: #DEE5E5;
+    background-color: #17B890;
+    margin: 3px;
+}
+
+button:hover {
+    cursor: pointer;
+    background-color: #9DC5BB;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+#numberButtons, #pencilToggle {
+    display: none;
+}
+
+@media screen and (max-width: 520px) {
+    h1 {
+    margin-left: 3vw;
+    }
+    body {
+        margin: auto;
+    }
+    #board {
+        width: 95vw;
+        height: 95vw;
+    }
+    .cell {
+        font-size: 6vw;
+        width: 10vw;
+        height: 10vw;
+    }
+
+    #menus {
+        border-radius: 0px;
+        width: 95%;
+        margin-left: auto;
+        margin-right: auto;
+        align-self: center;
+    }
+
+    #numberButtons, #pencilToggle {
+        display: flex;
+        margin-top: 10px;
+        margin-left: auto;
+        margin-right: auto;
+        width: 90%;
+        background-color: #082D0F;
+        color: #17B890;
+        justify-content: space-evenly;
+        height: 5vw;
+        padding: 4px;
+    }
+
+    .numButton {
+       padding: 1px; 
+       font-size: 5vw;
+    }
+}

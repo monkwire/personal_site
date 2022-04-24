@@ -82,7 +82,7 @@ function clearHighlights() {
 function markIncorrect(c) {
     if (!c.classList.contains("locked")) {
         if (c.childElementCount === 0) {
-        c.classList.add("incorrect")
+            c.classList.add("incorrect")
         }
     }
 }
@@ -350,7 +350,7 @@ document.body.addEventListener("keydown", function (e) {
     }
 })
 
-resetButton.addEventListener("click", function() {
+resetButton.addEventListener("click", function () {
     resetPuzzle();
 })
 
@@ -377,3 +377,56 @@ function loadPuzzle(puzzle) {
     }
 }
 loadPuzzle(puzzle)
+
+// Configure mobile inputs
+pencilInput = false;
+
+const pencilToggle = document.querySelector("#pencilToggle");
+
+pencilToggle.addEventListener("click", function () {
+    if (pencilInput === false) {
+        pencilToggle.innerText = "Use Pen";
+        pencilToggle.classList.add("pencilToggleTrue");
+        pencilInput = true;
+    } else {
+        pencilToggle.innerText = "Use Pencil";
+        pencilToggle.classList.remove("pencilToggleTrue");
+        pencilInput = false;
+    }
+})
+
+const numberButtons = document.querySelector("#numberButtons");
+function loadNumberPad() {
+    for (let i = 1; i < 10; i++) {
+        let numButton = document.createElement("DIV");
+        numButton.classList.add("numButton");
+        numButton.innerText = i
+
+        numButton.addEventListener("click", function () {
+            if (activeCell != null) {
+                if (pencilInput === false) {
+                    inputNumber(activeCell, i)
+                } else {
+                    markPencil(activeCell, i)
+                }
+            checkAll()
+            }
+        })
+        numberButtons.append(numButton)
+    }
+    let deleteButton = document.createElement("DIV");
+    deleteButton.classList.add("numButton");
+    deleteButton.innerText = "⌫"
+    deleteButton.addEventListener("click", function () {
+        if (activeCell != null) {
+            if (!activeCell.classList.contains("locked")) {
+                activeCell.innerText = "";
+                checkAll()
+            }
+        }
+    })
+    numberButtons.append(deleteButton)
+}
+
+
+loadNumberPad()

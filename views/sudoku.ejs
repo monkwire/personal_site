@@ -16,8 +16,12 @@
     <h1>Sudoku</h1> 
     <div id="rawPuzzle"><%= puzzle %></div>
     <span tabindex="0" id="prevent-outside-tab"></span>
+    <div id="menus"><button id="resetButton">Reset</button><button><a href="/sudoku">New Random Hard Puzzle</a></button></div>
+    <div id="boardContainer">
     <div id="board"></div>
+    </div>
     <div id="numberButtons"></div>
+    <div id="pencilToggle">Use Pencil</div>
 
     <span tabindex="0" onfocus="focusFirstElement()"></span>
     <script>
@@ -26,7 +30,7 @@
         }
     </script>
 
-    <div id="menus"><button id="resetButton">Reset</button><button><a href="/sudoku">New Random Hard Puzzle</a></button></div>
+ 
 
     <script src="/public/scripts/nav_bar.js"></script> <script src="/public/scripts/sudoku.js"></script>
 
