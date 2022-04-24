@@ -193,10 +193,8 @@ hintButton.addEventListener("click", function () {
     if (wordBankDisplay.children.length > HEIGHT) {
         let randomWord = wordBankDisplay.children[Math.floor(Math.random() * wordBankDisplay.children.length)];
 
-        console.log("random: ", randomWord.innerText)
         while (SOLUTION.includes(randomWord.innerText)) {
             randomWord = wordBankDisplay.children[Math.floor(Math.random() * wordBankDisplay.children.length)];
-            console.log("new random word")
         }
         randomWord.remove();
     } else {
@@ -205,8 +203,6 @@ hintButton.addEventListener("click", function () {
         console.log(randomIndex)
         while (SOLUTION[randomIndex] === WORKING_GRID[randomIndex]) {
             randomIndex = Math.floor(Math.random() * SOLUTION.length)
-            console.log("new random index: ", randomIndex)
-            console.log(SOLUTION[randomIndex], WORKING_GRID[randomIndex])
         }
         WORKING_GRID[randomIndex] = SOLUTION[randomIndex];
         updateBank();
@@ -221,3 +217,14 @@ solveButton.addEventListener("click", function () {
     updateWorking();
     checkSolution();
 })
+
+let randomIndex = Math.floor(Math.random() * SOLUTION.length);
+
+console.log(randomIndex)
+while (SOLUTION[randomIndex] === WORKING_GRID[randomIndex]) {
+    randomIndex = Math.floor(Math.random() * SOLUTION.length)
+}
+
+WORKING_GRID[randomIndex] = SOLUTION[randomIndex];
+updateBank();
+placeWord(SOLUTION[randomIndex], GRID.children[randomIndex * 6]);
