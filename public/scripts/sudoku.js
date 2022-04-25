@@ -298,11 +298,14 @@ document.body.addEventListener("click", function (e) {
         selectCell(e.target)
     } else if (e.target.classList.contains("numButton")) {
         selectCell(activeCell)
-    } else if (e.target.id = "pencilToggle") {
-        selectCell(activeCell)
     } else if (e.target.classList.contains("pencilCell")) {
         selectCell(e.target.parentElement.parentElement)
+    } else if (e.originalTarget.id === "pencilToggle") {
+        if (activeCell != null) {
+            selectCell(activeCell)
+        }
     } else {
+        console.log("else")
         clearSelection()
         clearHighlights()
     }

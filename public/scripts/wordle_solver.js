@@ -289,6 +289,7 @@ function buildColorPalette() {
             } else {
                 console.log(this.classList)
                 selectedCell.classList.add(this.classList[1])
+                selectNextCell(selectedCell)
             }
         })
         PALETTE.append(swab)
