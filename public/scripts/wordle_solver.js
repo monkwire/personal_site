@@ -147,11 +147,11 @@ BOARD = document.querySelector("#board");
 words = [];
 allCells = [];
 
-selectedCell = null;
+let activeCell = null;
 
 
 function clearSelections() {
-    selectedCell = null;
+    activeCell = null;
     for (let cell of allCells) {
         cell.classList.remove("selected");
     }
@@ -168,7 +168,7 @@ function buildBoard(n_words, l_words) {
             newLetter.classList.add("cell");
             newLetter.addEventListener("click", function () {
                 clearSelections();
-                selectedCell = this;
+                activeCell = this;
                 this.classList.add("selected");
             })
             newWord.append(newLetter);
@@ -192,12 +192,12 @@ function getNextCell(cell) {
 
 function selectNextCell(cell) {
     clearSelections();
-    selectedCell = getNextCell(cell);
-    if (selectedCell === null) {
+    activeCell = getNextCell(cell);
+    if (activeCell === null) {
         return
     } else {
-        console.log(selectedCell)
-        selectedCell.classList.add("selected")
+        console.log(activeCell)
+        activeCell.classList.add("selected")
     }
 }
 
@@ -205,14 +205,14 @@ function selectPrevCell(cell) {
     clearSelections();
     if (cell.previousElementSibling === null) {
         if (cell.parentElement.previousElementSibling === null) {
-            selectedCell = null;
+            activeCell = null;
         } else {
-            selectedCell = cell.parentElement.previousElementSibling.lastChild;
-            selectedCell.classList.add("selected")
+            activeCell = cell.parentElement.previousElementSibling.lastChild;
+            activeCell.classList.add("selected")
         }
     } else {
-        selectedCell = cell.previousElementSibling;
-        selectedCell.classList.add("selected")
+        activeCell = cell.previousElementSibling;
+        activeCell.classList.add("selected")
     }
 }
 
@@ -226,41 +226,41 @@ function getCellIndex(cell) {
 }
 
 document.addEventListener("keydown", function (e) {
-    console.log(e)
-    if (selectedCell === null) {
+    if (activeCell === null) {
         return
     } else {
         if (e.key >= "a") {
-            selectedCell.innerText = e.key.toUpperCase();
-            selectNextCell(selectedCell);
+            activeCell.innerText = e.key.toUpperCase();
+            activeCell.classList.add("swabGrey")
+            selectNextCell(activeCell);
         } else if (e.key === "Backspace") {
-            clearSwabs(selectedCell)
-            if (selectedCell.innerText === "") {
-                selectPrevCell(selectedCell)
-                selectedCell.innerText = "";
-                clearSwabs(selectedCell)
+            clearSwabs(activeCell)
+            if (activeCell.innerText === "") {
+                selectPrevCell(activeCell)
+                activeCell.innerText = "";
+                clearSwabs(activeCell)
             } else {
-                selectedCell.innerText = "";
-                clearSwabs(selectedCell);
-                selectPrevCell(selectedCell);
+                activeCell.innerText = "";
+                clearSwabs(activeCell);
+                selectPrevCell(activeCell);
             }
         } else if (e.key === "ArrowRight") {
-            selectNextCell(selectedCell);
+            selectNextCell(activeCell);
         } else if (e.key === "ArrowLeft") {
-            selectPrevCell(selectedCell);
+            selectPrevCell(activeCell);
         } else if (e.key === "ArrowUp") {
-            if (selectedCell.parentElement.previousElementSibling != null) {
-                last = selectedCell;
+            if (activeCell.parentElement.previousElementSibling != null) {
+                last = activeCell;
                 clearSelections();
-                selectedCell = last.parentElement.previousElementSibling.children[getCellIndex(last)]
-                selectedCell.classList.add("selected")
+                activeCell = last.parentElement.previousElementSibling.children[getCellIndex(last)]
+                activeCell.classList.add("selected")
             }
         } else if (e.key === "ArrowDown") {
-            if (selectedCell.parentElement.nextElementSibling != null) {
-                last = selectedCell;
+            if (activeCell.parentElement.nextElementSibling != null) {
+                last = activeCell;
                 clearSelections()
-                selectedCell = last.parentElement.nextElementSibling.children[getCellIndex(last)]
-                selectedCell.classList.add("selected")
+                activeCell = last.parentElement.nextElementSibling.children[getCellIndex(last)]
+                activeCell.classList.add("selected")
             }
         } else if (e.key === "Enter") {
             console.log("enter pressed")
@@ -269,7 +269,7 @@ document.addEventListener("keydown", function (e) {
     }
 })
 
-const swabs = ["swabBlack", "swabGrey", "swabYellow", "swabGreen"]
+const swabs = ["swabGrey", "swabYellow", "swabGreen"]
 
 function clearSwabs(cell) {
     for (let swab of swabs) {
@@ -284,12 +284,12 @@ function buildColorPalette() {
         swab.classList.add("swab");
         swab.classList.add(swabs[i])
         swab.addEventListener("click", function () {
-            if (selectedCell === null) {
+            if (activeCell === null) {
                 return
             } else {
-                console.log(this.classList)
-                selectedCell.classList.add(this.classList[1])
-                selectNextCell(selectedCell)
+                clearSwabs(activeCell);
+                activeCell.classList.add(this.classList[1])
+                selectNextCell(activeCell)
             }
         })
         PALETTE.append(swab)
@@ -299,8 +299,8 @@ function buildColorPalette() {
 
 buildBoard(6, 5)
 buildColorPalette()
-selectedCell = allCells[0]
-selectedCell.classList.add("selected")
+activeCell = allCells[0]
+activeCell.classList.add("selected")
 
 
 function getResults() {
@@ -346,37 +346,38 @@ clearGridButton.addEventListener("click", function () {
     for (let cell of allCells) {
         clearSwabs(cell)
         cell.innerText = ""
-        selectedCell = null
+        activeCell = null
     }
 })
 
 // Mobile keyboard configuration
-
-
 const keyboard = document.querySelector("#keyboard")
 
 for (let keyRow of keyboard.children) {
     for (let keyButton of keyRow.children) {
         keyButton.addEventListener("click", function (e) {
-        console.log(e)            
+            console.log(e)
             if (keyButton.id === "enterButton") {
                 getResults()
             } else if (keyButton.id === "backspaceButton") {
-                clearSwabs(selectedCell)
-                if (selectedCell.innerText === "") {
-                    selectPrevCell(selectedCell)
-                    selectedCell.innerText = "";
-                    clearSwabs(selectedCell)
+                clearSwabs(activeCell)
+                if (activeCell.innerText === "") {
+                    selectPrevCell(activeCell)
+                    activeCell.innerText = "";
+                    clearSwabs(activeCell)
                 } else {
-                    selectedCell.innerText = "";
-                    clearSwabs(selectedCell);
-                    selectPrevCell(selectedCell);
+                    activeCell.innerText = "";
+                    clearSwabs(activeCell);
+                    selectPrevCell(activeCell);
                 }
             } else {
-                selectedCell.innerText = e.target.innerText.toUpperCase();
-                selectNextCell(selectedCell);
+                activeCell.innerText = e.target.innerText.toUpperCase();
+                activeCell.classList.add("swabGrey")
+                selectNextCell(activeCell);
 
-        }
-    })
+            }
+        })
+    }
 }
-}
+
+updateDisplay()
