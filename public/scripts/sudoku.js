@@ -207,23 +207,21 @@ function checkAll() {
     for (let i of blocksToCheck) {
         checkBlock(allCells[i])
     }
-}
-
-let mistakesFound = false;
-let emptysquares = false;
-for (let cell of allCells) {
-    if (cell.classList.contains("incorrect")) {
-        mistakesFound = true
-        break
+    let mistakesFound = false;
+    let emptysquares = false;
+    for (let cell of allCells) {
+        if (cell.classList.contains("incorrect")) {
+            mistakesFound = true
+            break
+        }
+        else if (cell.innerText.length === 0) {
+            emptysquares = true
+            break
+        }
     }
-    else if (cell.innerText.length === 0) {
-        emptysquares = true
-        break
+    if (mistakesFound === false && emptysquares === false) {
+        victoryAnimation()
     }
-}
-
-if (mistakesFound === false && emptysquares === false) {
-    victoryAnimation()
 }
 
 function getNextEmptyCell(cell) {
@@ -416,8 +414,8 @@ function loadNumberPad() {
                 } else {
                     markPencil(activeCell, i)
                 }
-            checkAll()
-            highlightMatching()
+                checkAll()
+                highlightMatching()
             }
         })
         numberButtons.append(numButton)

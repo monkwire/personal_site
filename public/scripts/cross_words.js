@@ -93,18 +93,14 @@ function drop_handler(e) {
 
 // Place word
 function placeWord(word, target) {
-    console.log("word: ", word)
-    console.log("target: ", target)
 
     if (WORKING_GRID.includes(word)) {
-        console.log("duplicate found of ", word)
         for (r of rows) {
             row_word = Array(WIDTH);
             for (cell in r) {
                 row_word[cell] = r[cell].innerText
             }
             if (row_word.join("") === word) {
-                console.log("found match at: ", r)
                 for (cell of r) {
                     cell.innerText = ""
                 }
@@ -133,15 +129,23 @@ function placeWord(word, target) {
         }
     }
     getRow(target)
-    console.log(row)
 
     for (let i = 0; i < word.length; i++) {
         row[i].innerText = word[i];
+        row[i].setAttribute("draggable", true);
+        row[i].addEventListener("dragstart", function(e) {
+            e.dataTransfer.setData("text/plain", word);
+            e.dataTransfer.dropEffect = "move"
+        })
+        row[i].setAttribute("ondrop", "drop_handler(event)")
+        row[i].setAttribute("ondragover", "dragover_handler(event)");
     }
     updateWorking();
     updateBank();
     checkSolution();
 }
+
+
 
 // Flash if user has submited the right combination
 function victoryAnimation() {
@@ -181,7 +185,6 @@ function clearBoard() {
 }
 
 resetButton.addEventListener("click", function () {
-    console.log("reset")
     clearBoard();
     updateWorking();
     updateBank();
@@ -200,7 +203,6 @@ hintButton.addEventListener("click", function () {
     } else {
         let randomIndex = Math.floor(Math.random() * SOLUTION.length);
 
-        console.log(randomIndex)
         while (SOLUTION[randomIndex] === WORKING_GRID[randomIndex]) {
             randomIndex = Math.floor(Math.random() * SOLUTION.length)
         }
