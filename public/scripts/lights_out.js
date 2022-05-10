@@ -18,8 +18,10 @@ function flipCell(cell) {
     cell.classList.remove("solutionVisible")
     if (cell.classList.contains("active")) {
         cell.classList.remove("active")
+        cell.classList.add("passive")
     } else {
         cell.classList.add("active")
+        cell.classList.remove("passive")
     }
 }
 

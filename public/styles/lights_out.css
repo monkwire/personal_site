@@ -20,7 +20,12 @@ body {
     background-color: var(--color4);
     border: 1px solid var(--color2);
     box-sizing: border-box;
+
+    animation-duration: 0.5s;
 }
+
+
+
 
 .cell:hover {
     cursor: pointer;
@@ -41,9 +46,22 @@ body {
     margin: auto;
 }
 
-
+@keyframes changeToActive {
+    from {background-color: var(--color4);}
+    to {background-color: var(--color3);}
+}
 .active {
     background-color: var(--color3);
+    animation-name: changeToActive;
+}
+
+@keyframes changeToPassive {
+    from {background-color: var(--color3);}
+    to {background-color: var(--color4);}    
+}
+.passive {
+    background-color: var(--color4);
+    animation-name: changeToPassive;
 }
 
 .solutionVisible {
@@ -72,3 +90,4 @@ button {
     width: fit-content;
     margin: auto;
 }
+
