@@ -1,5 +1,13 @@
+:root {
+    --bg-color: #5C6B73;
+    --color1: #253237;
+    --color2: #9DB4C0;
+    --color3: #C2DFE3;
+    --color4: #E0FBFC;
+}
+
 body {
-    background-color: #5E807F;
+    background-color: var(--bg-color);
 }
 
 #board {
@@ -41,9 +49,9 @@ body {
 }
 
 .cell {
-    background-color: #DEE5E5;
-    color: #17B890;
-    border: 1px solid  #5E807F;
+    background-color: var(--color3);
+    color: var(--color1);
+    border: 1px solid  var(--bg-color);
     height: 50px;
     flex-grow: 1;
     flex-basis: 0;
@@ -55,23 +63,23 @@ body {
 
 .cell:hover {
     cursor: pointer;
-    background-color: #9DC5BB;
+    background-color: var(--color2);
 
 }
 
 .cell:nth-child(1) {
-    border-left: 3px solid #5E807F;
+    border-left: 3px solid var(var(--bg-color));
 }
 
 .cell:nth-child(3n) {
-    border-right: 3px solid #5E807F;
+    border-right: 3px solid var(--bg-color);
 }
 .row:nth-child(3n) {
-    border-bottom: 2px solid #5E807F;
+    border-bottom: 2px solid var(--bg-color);
 }
 
 .row:nth-child(1){
-    border-top: 2px solid 5E807F;
+    border-top: 2px solid var(--bg-color);
 }
 
 .matching {
@@ -79,11 +87,11 @@ body {
 }
 
 .locked {
-    color: #082D0F;
+    color: var(--color1);
 }
 
 .selected {
-    background-color: #9DC5BB;
+    background-color: var(--color2);
 }
 
 .incorrect {

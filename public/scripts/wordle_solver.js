@@ -96,7 +96,6 @@ function matchPlace(pool, matches) {
     let remainingWords = [];
     for (let i = 0; i < pool.length; i++) {
         let allValidCharacters = true;
-        console.log(`checking ${pool[i]} against ${matches}`)
         for (let j = 0; j < pool[i].length; j++) {
             if (matches[j] === "*" || matches[j] === "_") {
                 continue
@@ -195,7 +194,6 @@ function selectNextCell(cell) {
     if (activeCell === null) {
         return
     } else {
-        console.log(activeCell)
         activeCell.classList.add("selected")
     }
 }
@@ -262,7 +260,6 @@ document.addEventListener("keydown", function (e) {
                 activeCell.classList.add("selected")
             }
         } else if (e.key === "Enter") {
-            console.log("enter pressed")
             getResults()
         }
     }
@@ -355,7 +352,6 @@ const keyboard = document.querySelector("#keyboard")
 for (let keyRow of keyboard.children) {
     for (let keyButton of keyRow.children) {
         keyButton.addEventListener("click", function (e) {
-            console.log(e)
             if (keyButton.id === "enterButton") {
                 getResults()
             } else if (keyButton.id === "backspaceButton") {
@@ -380,3 +376,78 @@ for (let keyRow of keyboard.children) {
 }
 
 updateDisplay()
+
+function getValidCommon() {
+    let validCommon = [];
+    for (let i = 0; i < commonWordBox.children.length; i++) {
+        validCommon.push(commonWordBox.children[i].innerText);
+    }
+    return validCommon;
+}
+
+
+function getBestWord(possibleAnswers) {
+    let avoidLetters = [];
+
+    for (let word of BOARD.children) {
+        for (letter of word.children) {
+            if (letter.classList.contains("swabGreen")) {
+                avoidLetters.push(letter.innerText)
+            }
+        }
+    }
+
+    let keyLetters = {};
+    let keys = []
+
+    for (let word of possibleAnswers) {
+        for (let letter of word) {
+            if (avoidLetters.includes(letter)) {
+                continue
+            } else {
+                if (keyLetters[letter] === undefined) {
+                    keyLetters[letter] = 1;
+                    keys.push(letter)
+                } else {
+                    keyLetters[letter] += 1;
+                }
+            }
+        }
+    }
+    let keyLettersArray = []
+    for (let key of keys) {
+        keyLettersArray.push([keyLetters[key], key])
+    }
+    console.log(keyLettersArray)
+    keyLettersArray.sort(function (a, b) {
+        var valueA, valueB;
+
+        valueA = a[0];
+        valueB = b[0];
+        if (valueA < valueB) {
+            return 1;
+        }
+        else if (valueA > valueB) {
+            return -1;
+        }
+        return 0;
+
+    });
+    console.log(keyLettersArray)
+
+
+    for (let i = 4; i >= 0; i--) {
+        let commonLetters = []
+
+        for (let j = 0; j < i; j++) {
+            commonLetters.push(keyLettersArray[j][1])
+        }
+        console.log(commonLetters)
+        let bestGuesses = include(allFiveLetterWords, commonLetters.join(""));
+        console.log(bestGuesses)
+        if (bestGuesses.length > 0) {
+            return bestGuesses
+        }
+
+    }
+}
