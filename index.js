@@ -26,9 +26,9 @@ app.get("/projects", (req, res) => {
     res.render("projects", { title })
 })
 
-app.get("/resume", (req, res) => {
-    const title = "Clide Stefani: Resume"
-    res.render("resume", { title })
+app.get("/contact", (req, res) => {
+    const title = "Clide Stefani: Contact"
+    res.render("contact", { title })
 })
 
 app.get("/music", (req, res) => {
@@ -41,13 +41,8 @@ app.get("/writing", (req, res) => {
     res.render("writing", { title })
 })
 
-app.get("/authority_tracker", (req, res) => {
-    const title = "Authority Tracker"
-    res.render("authority_tracker")
-})
-
 app.get("/sudoku", (req, res) => {
-    const title = "Sudoku";
+    const title = "Clide Stefani: Sudoku";
     const sudoku = require("./sudoku_puzzles");
     const get_random_sudoku = sudoku.get_random_puzzle;
     const puzzle = get_random_sudoku();
@@ -55,7 +50,7 @@ app.get("/sudoku", (req, res) => {
 })
 
 app.get("/wordle_solver", (req, res) => {
-    const title = "Wordle Solver"
+    const title = "Clide Stefani: Wordle Solver"
     res.render("wordle_solver", { title })
 })
 
@@ -66,12 +61,12 @@ app.get("/cross_words", (req, res) => {
     const puzzle_data = get_puzzle();
     const puzzle = puzzle_data[0];
     const bank = puzzle_data[1];
-    const title = "Cross-words";
+    const title = "Clide Stefani: Cross-words";
     res.render("cross_words", { title, puzzle, bank });
 })
 
 app.get("/lights_out", (req, res) => {
-    const title = "Lights Out"
+    const title = "Clide Stefani: Lights Out"
     res.render("lights_out", { title })
 })
 
