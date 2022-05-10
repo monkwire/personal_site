@@ -1,0 +1,74 @@
+:root {
+    --color1: #605856;
+    --color2: #274156;
+    --color3: #1c6E8C;
+    --color4: #ACBED8;
+    --color5: #E8EBF7;
+
+    --cellSize: 80px;
+}
+
+body {
+    background-color: var(--color2);
+
+}
+
+
+.cell {
+    height: 80px; 
+    width: 80px;
+    background-color: var(--color4);
+    border: 1px solid var(--color2);
+    box-sizing: border-box;
+}
+
+.cell:hover {
+    cursor: pointer;
+}
+
+.row {
+    display: flex;
+    background-color: var(--color2);
+    justify-content: center;
+    flex-basis: auto;
+}
+
+
+#board {
+    display: flex;
+    width: max-content;
+    flex-direction: column;
+    margin: auto;
+}
+
+
+.active {
+    background-color: var(--color3);
+}
+
+.solutionVisible {
+    border: 3px dashed var(--color5);
+}
+
+
+#buttons {
+    display: flex;
+    background-color: var(--color4);
+    justify-content: space-around;
+    margin-top: 1rem;
+}
+
+button {
+    border-style: none;
+    margin-top: 0.25em;
+    margin-bottom: 0.25em;
+    background-color: var(--color5);
+    color: var(--color2);
+}
+
+#gameContainer {
+    display: flex;
+    flex-direction: column;
+    width: fit-content;
+    margin: auto;
+}

@@ -70,6 +70,12 @@ app.get("/cross_words", (req, res) => {
     res.render("cross_words", { title, puzzle, bank });
 })
 
+app.get("/lights_out", (req, res) => {
+    const title = "Lights Out"
+    res.render("lights_out", { title })
+})
+
+
 const port = 3000;
 app.listen(port, () => {
     console.log(`listening on port ${port} `)
