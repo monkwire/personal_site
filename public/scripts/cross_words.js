@@ -12,6 +12,7 @@ const gridDisplay = document.querySelector("#grid");
 let rows = [];
 let WORKING_GRID = Array(HEIGHT);
 
+
 function buildGrid() {
     for (let i = 0; i < HEIGHT; i++) {
         row = [];
@@ -71,10 +72,22 @@ function updateBank() {
     }
 }
 
+
+let dragging = false;
+let dragged_element = null;
+
+
 // Drag and Drop Interface
 function dragstart_handler(e) {
     e.dataTransfer.setData("text/plain", e.target.innerText);
     e.dataTransfer.dropEffect = "move"
+    let drgImg = document.createElement("div");
+    drgImg.innerText = e.target.innerText;
+    drgImg.classList.add("dragged")
+    dragElementsDiv.append(drgImg);
+    dragged_element = drgImg;
+    dragging = true;
+    e.dataTransfer.setDragImage(drgImg, 0, 0)
 }
 
 function dragover_handler(e) {
@@ -87,10 +100,21 @@ function drop_handler(e) {
     const data = e.dataTransfer.getData("text/plain")
     e.target.innerText = data
     placeWord(data, e.target)
-
+    dragElementsDiv.innerText = "";
 }
 
 
+
+
+
+
+document.addEventListener("mouseup", function () {
+    console.log("mouseup")
+    dragging = false;
+    dragged_element = null;
+})
+
+const dragElementsDiv = document.querySelector("#dragElements");
 // Place word
 function placeWord(word, target) {
 
@@ -133,9 +157,24 @@ function placeWord(word, target) {
     for (let i = 0; i < word.length; i++) {
         row[i].innerText = word[i];
         row[i].setAttribute("draggable", true);
-        row[i].addEventListener("dragstart", function(e) {
+        row[i].addEventListener("dragstart", function (e) {
             e.dataTransfer.setData("text/plain", word);
             e.dataTransfer.dropEffect = "move"
+            console.log(e)
+            let drgImg = document.createElement("div");
+            drgImg.innerText = word;
+            drgImg.classList.add("dragged")
+            dragElementsDiv.append(drgImg);
+            dragged_element = drgImg;
+            dragging = true;
+            e.dataTransfer.setDragImage(drgImg, 0, 0)
+            for (let cell of row) {
+                cell.innerText = "";
+            }
+            updateWorking();
+            updateBank();
+            checkSolution();
+
         })
         row[i].setAttribute("ondrop", "drop_handler(event)")
         row[i].setAttribute("ondragover", "dragover_handler(event)");
@@ -229,3 +268,7 @@ while (SOLUTION[randomIndex] === WORKING_GRID[randomIndex]) {
 WORKING_GRID[randomIndex] = SOLUTION[randomIndex];
 updateBank();
 placeWord(SOLUTION[randomIndex], GRID.children[randomIndex * 6]);
+
+
+
+

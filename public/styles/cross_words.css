@@ -105,3 +105,20 @@ button:hover {
     display: none;
 
 }
+
+.dragged {
+    height: 30px;
+    width: 90px;
+    font-size: 45px;
+    transform: rotate(-10deg);
+    letter-spacing: 6px;
+    color: #f5cb5c;
+    animation: pickUp 1s;
+    position: fixed;
+}
+
+
+#dragElements {
+    position: absolute;
+    top: -9999px;
+}
