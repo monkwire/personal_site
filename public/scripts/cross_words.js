@@ -9,8 +9,11 @@ const WIDTH = SOLUTION[0].length;
 const GRID = document.createElement("div")
 const gridDisplay = document.querySelector("#grid");
 
+let STARTING_WORD = null;
+let startingWordIndex = Math.floor(Math.random() * SOLUTION.length);
 let rows = [];
 let WORKING_GRID = Array(HEIGHT);
+
 
 
 function buildGrid() {
@@ -105,18 +108,14 @@ function drop_handler(e) {
 
 
 
-
-
-
 document.addEventListener("mouseup", function () {
-    console.log("mouseup")
     dragging = false;
     dragged_element = null;
 })
 
 const dragElementsDiv = document.querySelector("#dragElements");
 // Place word
-function placeWord(word, target) {
+function placeWord(word, target, starting=false) {
 
     if (WORKING_GRID.includes(word)) {
         for (r of rows) {
@@ -156,11 +155,15 @@ function placeWord(word, target) {
 
     for (let i = 0; i < word.length; i++) {
         row[i].innerText = word[i];
+        if (!starting) {
         row[i].setAttribute("draggable", true);
         row[i].addEventListener("dragstart", function (e) {
+            console.log("moving within grid; word: ", word, "starting word: ", STARTING_WORD)
+            if (word === STARTING_WORD) {
+                return false;
+            };
             e.dataTransfer.setData("text/plain", word);
             e.dataTransfer.dropEffect = "move"
-            console.log(e)
             let drgImg = document.createElement("div");
             drgImg.innerText = word;
             drgImg.classList.add("dragged")
@@ -171,6 +174,7 @@ function placeWord(word, target) {
             for (let cell of row) {
                 cell.innerText = "";
             }
+        
             updateWorking();
             updateBank();
             checkSolution();
@@ -179,11 +183,37 @@ function placeWord(word, target) {
         row[i].setAttribute("ondrop", "drop_handler(event)")
         row[i].setAttribute("ondragover", "dragover_handler(event)");
     }
+}
     updateWorking();
     updateBank();
     checkSolution();
 }
 
+function deny_drop(e) {
+    e.preventDefault()
+        console.log("deny_drop")
+        return false
+    }
+
+function placeStartingWord() {
+
+    WORKING_GRID[startingWordIndex] = SOLUTION[startingWordIndex];
+    updateBank();
+    placeWord(SOLUTION[startingWordIndex], GRID.children[startingWordIndex * 6], true);
+    STARTING_WORD = WORKING_GRID[startingWordIndex];
+    
+    for (let i = (startingWordIndex * WIDTH); i < (WIDTH + (startingWordIndex * WIDTH)); i++) {
+        GRID.children[i].setAttribute("draggable", "false")
+        GRID.children[i].setAttribute("ondrop", "deny_drop(event)")}
+    
+    for (let word of wordBankDisplay.children) {
+        if (word.innerText === STARTING_WORD) {
+            word.setAttribute("draggable", "false")
+        }
+    }
+}
+
+placeStartingWord();
 
 
 // Flash if user has submited the right combination
@@ -225,6 +255,7 @@ function clearBoard() {
 
 resetButton.addEventListener("click", function () {
     clearBoard();
+    placeStartingWord();
     updateWorking();
     updateBank();
 })
@@ -258,17 +289,4 @@ solveButton.addEventListener("click", function () {
     updateWorking();
     checkSolution();
 })
-
-let randomIndex = Math.floor(Math.random() * SOLUTION.length);
-
-while (SOLUTION[randomIndex] === WORKING_GRID[randomIndex]) {
-    randomIndex = Math.floor(Math.random() * SOLUTION.length)
-}
-
-WORKING_GRID[randomIndex] = SOLUTION[randomIndex];
-updateBank();
-placeWord(SOLUTION[randomIndex], GRID.children[randomIndex * 6]);
-
-
-
 

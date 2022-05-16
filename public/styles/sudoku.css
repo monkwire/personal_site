@@ -95,19 +95,19 @@ body {
 }
 
 .incorrect {
-    color: #F49E4C;
+    background-color: var(--color2);
 }
 
 .victory {
-    background-color: #17B890;
-    color: #DEE5E5;
+    background-color: var(--color1);
+    color: var(--color1);
 }
 
 #menus {
     margin: auto;
     width: 500px;
     display: flex;
-    background-color: #082D0F;
+    background-color: var(--color1);
     justify-content: space-evenly;
     border-radius: 2px;
     margin-bottom: 6px;
@@ -115,14 +115,14 @@ body {
 
 button {
     border-style: none;
-    color: #DEE5E5;
-    background-color: #17B890;
+    color: var(--color4);
+    background-color: var(--color2);
     margin: 3px;
 }
 
 button:hover {
     cursor: pointer;
-    background-color: #9DC5BB;
+    background-color: var(--color3);
 }
 
 a {
@@ -165,8 +165,8 @@ a {
         margin-left: auto;
         margin-right: auto;
         width: 90%;
-        background-color: #082D0F;
-        color: #17B890;
+        background-color: var(--color1);
+        color: var(--color2);
         justify-content: space-evenly;
         height: 5vw;
         padding: 4px;
