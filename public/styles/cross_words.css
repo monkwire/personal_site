@@ -106,6 +106,8 @@ button:hover {
 
 }
 
+
+
 .dragged {
     height: 30px;
     width: 90px;
@@ -121,4 +123,15 @@ button:hover {
 #dragElements {
     position: absolute;
     top: -9999px;
+}
+
+
+@keyframes drop {
+    from {opacity: 100%;}
+    to {opacity: 0%;}
+}
+
+.dragEnd {
+    opacity: 0;
+    animation: drop 1s;
 }

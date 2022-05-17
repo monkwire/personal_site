@@ -90,7 +90,7 @@ function dragstart_handler(e) {
     dragElementsDiv.append(drgImg);
     dragged_element = drgImg;
     dragging = true;
-    e.dataTransfer.setDragImage(drgImg, 0, 0)
+    e.dataTransfer.setDragImage(drgImg, 60, 40)
 }
 
 function dragover_handler(e) {
@@ -105,6 +105,8 @@ function drop_handler(e) {
     placeWord(data, e.target)
     dragElementsDiv.innerText = "";
 }
+
+
 
 
 
