@@ -287,6 +287,7 @@ function buildColorPalette() {
                 activeCell.classList.add(this.classList[1])
                 selectNextCell(activeCell)
             }
+            getResults();
         })
         PALETTE.append(swab)
     }
@@ -371,6 +372,7 @@ for (let keyRow of keyboard.children) {
                 selectNextCell(activeCell);
 
             }
+            getResults();
         })
     }
 }
@@ -451,3 +453,7 @@ function getBestWord(possibleAnswers) {
 
     }
 }
+
+document.addEventListener("keyup", function(e) {
+    getResults();
+})
