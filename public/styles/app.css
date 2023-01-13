@@ -105,3 +105,31 @@ nav ul li a div {
     margin-bottom: 0;
 
 }
+
+
+#stencil-image {
+    display: inline-block;
+}
+
+.main-content {
+    display: flex;
+    flex-direction: row;
+}
+
+#home-page-text-content {
+    display: flex;
+    flex-direction: column;
+}
+
+@media screen and (max-width: 730px) {
+    .main-content {
+        flex-direction: column;
+    }
+
+    #stencil-image {
+        width: 100px;
+        margin: auto;
+        height: auto;
+    }
+    
+}
