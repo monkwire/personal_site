@@ -172,7 +172,7 @@ function placeWord(word, target, starting=false) {
             dragElementsDiv.append(drgImg);
             dragged_element = drgImg;
             dragging = true;
-            e.dataTransfer.setDragImage(drgImg, 0, 0)
+            e.dataTransfer.setDragImage(drgImg, 60, 40)
             for (let cell of row) {
                 cell.innerText = "";
             }
