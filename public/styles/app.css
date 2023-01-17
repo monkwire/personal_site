@@ -1,8 +1,10 @@
 body {
     background-color: #424b54;
     font-family: "Ubuntu", sans-serif;
-    margin-left: 1rem;
     color: #fff8e5;
+    max-width: 1000px;
+    margin: auto;
+    padding: 1rem;
 }
 
 ul {
@@ -107,15 +109,20 @@ nav ul li a div {
 }
 
 
-#stencil-image {
+img {
     display: inline-block;
-    height: 450px;
+    height: 400px;
     width: auto;
 }
+
 
 .main-content {
     display: flex;
     flex-direction: row;
+}
+
+.contact-main {
+    justify-content: space-between;
 }
 
 #home-page-text-content {
