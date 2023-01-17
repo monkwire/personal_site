@@ -109,6 +109,8 @@ nav ul li a div {
 
 #stencil-image {
     display: inline-block;
+    height: 450px;
+    width: auto;
 }
 
 .main-content {
