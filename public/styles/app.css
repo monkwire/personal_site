@@ -184,8 +184,9 @@ audio::-webkit-media-controls-volume-slider-container {
     }
 
     #minilogue-img {
-        width: 400px;
+        width: 300px;
         height: auto;
+        margin-top: 30px;
     }
 
     
