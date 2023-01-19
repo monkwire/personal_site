@@ -110,7 +110,7 @@ nav ul li a div {
 
 }
 
-.dropItem {
+.dropItem div {
     justify-content: flex-start;
     flex-direction: row;
 }
