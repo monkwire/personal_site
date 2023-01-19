@@ -102,11 +102,17 @@ a div {
 
 nav ul li a div {
     border: none;
-    display: default;
+    display: flex;
     margin: default;
     background-color: inherit;
     margin-bottom: 0;
+    justify-content: center;
 
+}
+
+.dropItem {
+    justify-content: flex-start;
+    flex-direction: row;
 }
 
 
@@ -158,19 +164,16 @@ audio {
 }
 
 
-audio::-webkit-media-controls-volume-slider-container {
-    color: red;
-    background-color: red;
-}
 
-audio::-webkit-media-controls-panel {
-
-    background-color: #a0276e;
-  
-    color: #a0276e;
-  
+  html::-webkit-scrollbar {
+    display: none;
+    
   }
 
+  html {
+    -ms-overflow-style: none; 
+    scrollbar-width: none;
+  }
 
 
 
