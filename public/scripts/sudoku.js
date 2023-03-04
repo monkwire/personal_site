@@ -8,6 +8,7 @@ const resetButton = document.querySelector("#resetButton")
 const rawGrid = document.querySelector("#rawPuzzle");
 rawGrid.remove()
 const puzzle = rawGrid.innerText.split(",");
+//
 
 // Build grid
 for (let i = 0; i < GRID_SIZE; i++) {

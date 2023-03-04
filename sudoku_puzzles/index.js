@@ -8,3 +8,4 @@ for (let puz of all_puzzles) {
 exports.get_random_puzzle = function() {
     return all_puzzles[Math.floor(Math.random() * all_puzzles.length)];
 }
+
