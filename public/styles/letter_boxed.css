@@ -1,0 +1,16 @@
+body {
+    background-color: rgb(252, 113, 107);
+}
+
+h2 {
+    color: black;
+    font-family: 'Bitter', 'Helvetica Neue', Arial, sans-serif;
+}
+
+#canvas-container {
+    display: flex;
+}
+
+canvas {
+    margin: auto;
+}

@@ -70,7 +70,10 @@ app.get("/lights_out", (req, res) => {
     res.render("lights_out", { title })
 })
 
-
+app.get("/letter-boxed_solver", (req, res) => {
+    const title = "Clide Stefani: Letter-boxed Solver"
+    res.render("letter_boxed", { title })
+})
 
 
 const port = 3000;
