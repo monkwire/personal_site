@@ -168,15 +168,24 @@ audio {
 
   html::-webkit-scrollbar {
     display: none;
-    
+
   }
 
   html {
-    -ms-overflow-style: none; 
+    -ms-overflow-style: none;
     scrollbar-width: none;
   }
 
 
+@media screen and (max-width: 500px) {
+    nav {
+        justify-content: center;
+    }
+    nav ul li {
+        width: 5em;
+
+    }
+}
 
 @media screen and (max-width: 730px) {
     .main-content {
@@ -200,7 +209,6 @@ audio {
         height: auto;
         margin-top: 30px;
     }
-
-    
-    
 }
+
+
