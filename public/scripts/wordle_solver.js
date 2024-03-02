@@ -8,14 +8,14 @@ let command = null;
 const wordBox = document.querySelector("#wordBox");
 const commonWordBox = document.querySelector("#commonWordBox");
 
-function updateDisplay(validGuesses: string[]) {
+function updateDisplay() {
     wordBox.innerText = ""
     commonWordBox.innerText = ""
 
     isWordBoxEmpty = true;
     isCommonWordBoxEmpty = true;
 
-    for (let word of validGuesses) {
+    for (let word of validWords) {
         displayWord = document.createElement("span")
         displayWord.innerText = word.toUpperCase()
         displayWord.classList.add("displayWord")
@@ -37,90 +37,108 @@ function updateDisplay(validGuesses: string[]) {
     }
 }
 
-class PositionalRequirements {
-    required: string;
-    banned: string[];
+// SOLVER FUNCTIONALITY
+let validWords = [];
 
-    constructor() {
-        this.required: '';
-        this.banned = [];
+// Run command
+function runCommand(command) {
+    if (validWords.length > 0) {
+        validWords = command(validWords, userInput)
+    } else {
+        validWords = command(allFiveLetterWords, userInput)
     }
+    updateDisplay()
 }
 
-class Constraints {
-    letterCounts { [key: string] : number[]};
-    positionalRequirements: PositionalRequirements[];
-    length: number;
-
-    constructor(length: number) {
-         this.letterCounts = {};
-        "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split('').forEach(letter => {
-            this.letterCounts[letter] = [0, 5];
-        });
-        this.positionalRequirements = Array.from({ length }, () => new PositionalRequirements());
-        this.length = length;
-
-    }
-}
-
-}
-
-class Word {
-    positional: string[];
-    letterCounts: { [key: string]: number };
-
-    constructor(word: string) {
-        this.positional = Array.from(word);
-        this.letterCounts = {};
-        word.split('').forEach(letter => {
-            this.letterCounts[letter] = (this.letterCounts[letter] || 0) + 1;
-        });
-    }
-
-    isValid(constraints: Constraints): boolean {
-        if (constraints.length !== this.positional.length) {
-            return false;
-        }
-
-        for (let i = 0; i < this.positional.length; i++) {
-            const position = this.positional[i];
-            const req = constraints.positionalRequirements[i];
-
-            if (req.required && req.required !== position) {
-                return false;
-            } else if (req.banned.includes(position)) {
-                return false;
+// Exclude
+function exclude(pool, badLetters) {
+    let remainingWords = [];
+    for (let i = 0; i < pool.length; i++) {
+        foundBadLetter = false;
+        for (let letter of badLetters) {
+            if (pool[i].includes(letter)) {
+                foundBadLetter = true;
+                break
             }
         }
+        if (foundBadLetter === false) {
+            remainingWords.push(pool[i])
+        }
+    }
+    return remainingWords
+}
 
-        for (const letter in constraints.letterCounts) {
-            if (constraints.letterCounts[letter][0] > (this.letterCounts[letter] || 0)) {
-                return false;
-            }
 
-            if (constraints.letterCounts[letter][1] < (this.letterCounts[letter] || 0)) {
-                return false;
+// Include
+function include(pool, goodLetters) {
+    let remainingWords = [];
+    for (let i = 0; i < pool.length; i++) {
+        let includesAllGoodLetters = true;
+        for (let letter of goodLetters) {
+            if (letter === "*" || letter === "_") {
+                continue
+            } else if (pool[i].includes(letter) === false) {
+                includesAllGoodLetters = false
             }
         }
-        return true;
+        if (includesAllGoodLetters) {
+            remainingWords.push(pool[i])
+        }
     }
+    return remainingWords
 }
 
-class WordBank {
-    bank: Word[];
-
-    constructor(words: string[]) {
-        this.bank = words.map(word => new Word(word));
+// Match Place
+function matchPlace(pool, matches) {
+    if (matches.length != 5) {
+        return pool
     }
-
-
-    findValidWords(constraints: Constraints): string[] {
-        return this.bank.filter(word => word.isValid(constraints)).map(word => word.toString());
+    let remainingWords = [];
+    for (let i = 0; i < pool.length; i++) {
+        let allValidCharacters = true;
+        for (let j = 0; j < pool[i].length; j++) {
+            if (matches[j] === "*" || matches[j] === "_") {
+                continue
+            } else if (matches[j] === pool[i][j]) {
+                continue
+            } else {
+                allValidCharacters = false
+                break
+            }
+        }
+        if (allValidCharacters) {
+            remainingWords.push(pool[i])
+        }
     }
+    return remainingWords
 }
 
 
+// Match Place Exclude
+function matchPlaceExclude(pool, matches) {
+    if (matches.length != 5) {
+        return pool
+    }
 
+    pool = include(pool, matches);
+    let remainingWords = [];
+
+    for (let i = 0; i < pool.length; i++) {
+        let allValidCharacters = true;
+        for (let j = 0; j < pool[i].length; j++) {
+            if (matches[j] === "*" || matches[j] === "_") {
+                continue
+            } else if (matches[j] === pool[i][j]) {
+                allValidCharacters = false
+                break
+            }
+        }
+        if (allValidCharacters) {
+            remainingWords.push(pool[i])
+        }
+    }
+    return remainingWords
+}
 
 
 BOARD = document.querySelector("#board");
@@ -282,19 +300,6 @@ activeCell = allCells[0]
 activeCell.classList.add("selected")
 
 
-function updateConstraints(constraints: Constraints ) {
-
-    for (let cell of allCells) {
-        if (cell.classList.contains("swabGreen")) {
-            console.log('found green on ', cell)
-        } else if (cell.classList.contains("swabYellow")) {
-            console.log('found green on ', cell)
-        }
-    }
-}
-
-
-
 function getResults() {
     validWords = allFiveLetterWords;
     let matchPlaceLetters = new Array(5).fill("*");
@@ -374,20 +379,81 @@ for (let keyRow of keyboard.children) {
 
 updateDisplay()
 
+function getValidCommon() {
+    let validCommon = [];
+    for (let i = 0; i < commonWordBox.children.length; i++) {
+        validCommon.push(commonWordBox.children[i].innerText);
+    }
+    return validCommon;
+}
 
+
+function getBestWord(possibleAnswers) {
+    let avoidLetters = [];
+
+    for (let word of BOARD.children) {
+        for (letter of word.children) {
+            if (letter.classList.contains("swabGreen")) {
+                avoidLetters.push(letter.innerText)
+            }
+        }
+    }
+
+    let keyLetters = {};
+    let keys = []
+
+    for (let word of possibleAnswers) {
+        for (let letter of word) {
+            if (avoidLetters.includes(letter)) {
+                continue
+            } else {
+                if (keyLetters[letter] === undefined) {
+                    keyLetters[letter] = 1;
+                    keys.push(letter)
+                } else {
+                    keyLetters[letter] += 1;
+                }
+            }
+        }
+    }
+    let keyLettersArray = []
+    for (let key of keys) {
+        keyLettersArray.push([keyLetters[key], key])
+    }
+    console.log(keyLettersArray)
+    keyLettersArray.sort(function (a, b) {
+        var valueA, valueB;
+
+        valueA = a[0];
+        valueB = b[0];
+        if (valueA < valueB) {
+            return 1;
+        }
+        else if (valueA > valueB) {
+            return -1;
+        }
+        return 0;
+
+    });
+    console.log(keyLettersArray)
+
+
+    for (let i = 4; i >= 0; i--) {
+        let commonLetters = []
+
+        for (let j = 0; j < i; j++) {
+            commonLetters.push(keyLettersArray[j][1])
+        }
+        console.log(commonLetters)
+        let bestGuesses = include(allFiveLetterWords, commonLetters.join(""));
+        console.log(bestGuesses)
+        if (bestGuesses.length > 0) {
+            return bestGuesses
+        }
+
+    }
+}
 
 document.addEventListener("keyup", function(e) {
     getResults();
 })
-
-
-
-function main() {
-    bank = WordBank(allFiveLetterWords);
-    constraints = Constraints();
-    console.log('in main game loop')
-
-
-}
-
-main()
