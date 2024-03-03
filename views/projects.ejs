@@ -1,34 +1,34 @@
 <%- include("header") %>
     <h1>Projects</h1>
-    <h2><a href="https://github.com/Monkwire3/simple">SimpleDB</a></h2>
+    <h2><a href="https://github.com/monkwire/simple">SimpleDB</a></h2>
     <p>Simple is a database framework with fast read and write operations, allowing expensive processes to be delayed and scheduled. The Simple API uses SQL input strings to modify Parquet files. The Simple Parquet file editor API functions can be called directly, providing more control to the user. </p>
     <p>Simple is written in Rust using the Parquet and Arrow crates.</p>
-    <p>Find the source code <a href='https://github.com/Monkwire3/simple'>here</a>.</p>
-    <h2><a href='https://github.com/Monkwire3/word_paths'>Word Paths</a></h2>
+    <p>Find the source code <a href='https://github.com/monkwire/simple'>here</a>.</p>
+    <h2><a href='https://github.com/monkwire/word_paths'>Word Paths</a></h2>
     <p>Word Paths is a small program which generates the shortest path between two words, such that each step in the path is both a valid dictionary word, and only one addition, subtraction, or substitution away from the previous step.</p>
-    <p>This project features a comprehensive README and api reference <a href='https://github.com/Monkwire3/word_paths'>here</a>.</p>
-    <h2><a href="https://monkwire3.github.io/">Killer Sudoku</a></h2>
+    <p>This project features a comprehensive README and api reference <a href='https://github.com/monkwire/word_paths'>here</a>.</p>
+    <h2><a href="https://monkwire.github.io/">Killer Sudoku</a></h2>
     <p>Killer Sudoku is a variant of Sudoku that introduces the additional constraint of sum groups. A sum group is a group of non-repeating cells which add up to a specified sum. These sum groups are represented visually with an overlay of dashed lines and red sums. Complete the puzzle by fully filling the board with integers from 1 to 9, such that all rows, columns, squares, and sum groups are populated with non-repeating numbers.</p>
     <p>This project was built using plain JS, HTML, and CSS. The board is displayed using a canvas element, that rerenders whenever a key is pressed, or a cell is clicked. Since canvas elements do not actually contain objects, the most difficult part of this project was locating clicks on the canvas board.</p>
-    <p>The source code for this project can be found <a href="https://github.com/Monkwire3/monkwire3.github.io">here</a>.</p>
+    <p>The source code for this project can be found <a href="https://github.com/monkwire/monkwire.github.io">here</a>.</p>
     <h2><a href='https://fauxdiscord.herokuapp.com/'>Discourse (Faux Discord)</a></h2>
     <p>Discourse is a clone of the popular chat-app, Discord. Discourse allows users to join servers, make friends, and chat with each other, all in real-time.</p>
-    <p>The source code for this project can be found <a href="https://github.com/Monkwire3/FS_Project_Discourse">here</a>.</p>
+    <p>The source code for this project can be found <a href="https://github.com/monkwire/FS_Project_Discourse">here</a>.</p>
     <h2><a href='https://cubberd.herokuapp.com/'>Cubberd</a></h2>
     <p>Cubberd in a recipe finder that helps you minimize your shopping and food waste. To find a recipe on Cubberd, users input the ingredients that they have in their kitchen, and whether they want to search for recipes that maximize the use of already available ingredients or minimize the number of ingredients that must be shopped for.</p>
-    <p>The source code can be found <a href="https://github.com/Monkwire3/Cubberd">here</a>.</p>
+    <p>The source code can be found <a href="https://github.com/monkwire/Cubberd">here</a>.</p>
     <h2><a href="/wordle_solver">Wordle Solver</a></h2>
     <p>This is a program that can help you cheat at Wordle.</p>
     <p>Like Wordle, this program uses two word banks: a bank of common words and a bank of all words. Common words are more likely to be solutions, but all words can be used as guesses. Both banks are loaded with the page so that this tool is usable offline.</p>
     <p>This is a fairly simple Wordle helper, and I have some ideas as to how to improve upon it. Often, the most efficient way to play wordle is to guess words that you <i>know</i> will not be the solution, but that will limit the number of overall guesses you need to make. I would like to add a "suggested word" feature, which finds words that provide the most information for future guesses.</p>
-    <p>Code for the Wordle solver can be found <a href="https://github.com/MonkWire/professional_site/blob/main/public/scripts/wordle_solver.js">here</a>.</p>
+    <p>Code for the Wordle solver can be found <a href="https://github.com/monkwire/professional_site/blob/main/public/scripts/wordle_solver.js">here</a>.</p>
     <h2><a href="/sudoku">Sudoku</a></h2>
     <p>This is a sudoku player. Generating quality Sudoku puzzles isn't something I've figured out how to do yet, so until then, the puzzles on my site come from <a href="www.krazydad.com">krazydad.com</a>.</p>
     <p>I made this because I love sudoku and I would like to eventually write a player and generator for less common sudoku variants (namely, killer sudoku and jigoku). This is program is a first step.</p>
     <p>This project was good JS and DOM manipulation practice. This program generates a grid using only JS. Each cell is a combination of a visual element that gets manipulated with css classes, and a non-visual element what is indexed by row, column, and block. Event listeners are given to all display cells. These listeners trigger data changes to a corresponding non-visible cell.</p>
     <p>I thought a lot about user experience while making this. I added features that I appreciated in other solvers like selected number highlighting, row and column highlighting for selected cells, and auto-checking for basic errors.</p>
     <p>I have a long list of improvements I would like to add to this program. The most important (and most difficult) is a pencil marking feature. Additionaly, I would like to add arrow key functionality, and a puzzle generator.</p>
-    <p>Code for the sudoku page can be found <a href="https://github.com/MonkWire/professional_site/blob/main/public/scripts/sudoku_page.js">here</a>.</p>
+    <p>Code for the sudoku page can be found <a href="https://github.com/monkwire/professional_site/blob/main/public/scripts/sudoku_page.js">here</a>.</p>
     <h2><a href="/cross_words">Cross-words Game</a></h2>
     <p>This is a game I designed. The goal of the game is to fill a 5x5 grid with five-letter words, such that the nth letters of each consecutive word, put together, create a valid word. In other words, when filled, the grid should represent a valid crossword puzzle.</p>
     <p>The most difficult part of this project was writing the generator for these puzzles. Grids are generated recursively. At each step of recursion, the generator tries a new "across" word, checks that there valid "down" words (by checking a comprehensive set of all possible prefixes), then either tries another "across" word or takes a step backwards. Generating each puzzle takes about ten seconds, and most puzzles generated are not very fun to play because they feature too many obscure words. I have tried many ways to fix this problem. First, I tried a much smaller word bank with only common words, but the generator couldn't finish any puzzles because the bank was too small. I found another word bank that was a bit larger, and that bank has yielded better puzzles. Better than bad can still be bad, though. Since some of the puzzles generated with the new bank were high quality, I decided to run the generator for an hour then rank the puzzles based on the frequency the words appear in Google searches. Fortunately, the sorter found puzzles with more common words. Unfortunately, people Google some pretty vulgar stuff, so puzzles with explicit words scored highly. This is a long way of saying that the puzzles are pre-generated, pre-sorted, and pre-curated. However, if you would like to see the code for the generator, you can view that <a>here</a>, and you can see the code for the sorting algorithm <a>here</a>.</p>
