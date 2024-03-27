@@ -16,7 +16,6 @@ app.set("view engine", "ejs");
 
 
 app.get("/", (req, res) => {
-    console.log(req)
     const title = "Clide Stefani: Home"
     res.render("home", { title });
 })
