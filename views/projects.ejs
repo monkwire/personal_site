@@ -1,5 +1,13 @@
 <%- include("header") %>
-    <h1>Projects</h1>
+    <h1>Code</h1>
+    <h2><a href=https://go-review.googlesource.com>Go Standard Library</a></h2>
+    <p>I recently participated in a paid fellowship to work on the cryptography package of the Go standard library. My work focused on expanding tls shim testing coverage for go/crypto. In six weeks, my merged changes added around 60 new TLS tests to go/crypto. I am also responsible for finding inconsistent behavior between TLS 1.0 - 1.2 and TLS 1.3, which I documented in <a href="https://github.com/golang/go/issues/68516"> this Github issue</a>.</p>
+    <p>You can see all the code I wrote for the Go standard library <a href="https://go-review.googlesource.com/q/owner:cstefani.sites@gmail.com">here</a>.
+    <h2><a href="https://github.com/apache/arrow-rs">Apache arrow-rs</a></h2>
+    <p>Apache arrow-rs is the official Rust implementation of <a href="https://arrow.apache.org/">Apache Arrow</a>, an open-source platform that uses an in-memory columnar format to efficiently handle large chunks of data. Since February 2024, I've modified 10,000 lines of code in the arrow-rs repository, making me the the 11th contributor ranked by lines of code added. Some of my notable contributions include improving cast functions so that failed casts fail loudly, refactoring the cast crate, and significantly improving the contributor guidelines documentation.</p>
+    <p>You can see the code I've written for Apache arrow-rs <a href="https://github.com/apache/arrow-rs/commits?author=monkwire">here</a>.
+
+
     <h2><a href="https://github.com/monkwire/simple">SimpleDB</a></h2>
     <p>Simple is a database framework with fast read and write operations, allowing expensive processes to be delayed and scheduled. The Simple API uses SQL input strings to modify Parquet files. The Simple Parquet file editor API functions can be called directly, providing more control to the user. </p>
     <p>Simple is written in Rust using the Parquet and Arrow crates.</p>
@@ -11,16 +19,16 @@
     <p>Killer Sudoku is a variant of Sudoku that introduces the additional constraint of sum groups. A sum group is a group of non-repeating cells which add up to a specified sum. These sum groups are represented visually with an overlay of dashed lines and red sums. Complete the puzzle by fully filling the board with integers from 1 to 9, such that all rows, columns, squares, and sum groups are populated with non-repeating numbers.</p>
     <p>This project was built using plain JS, HTML, and CSS. The board is displayed using a canvas element, that rerenders whenever a key is pressed, or a cell is clicked. Since canvas elements do not actually contain objects, the most difficult part of this project was locating clicks on the canvas board.</p>
     <p>The source code for this project can be found <a href="https://github.com/monkwire/monkwire.github.io">here</a>.</p>
-    <h2><a href='https://fauxdiscord.herokuapp.com/'>Discourse (Faux Discord)</a></h2>
+    <!--<h2><a href='https://fauxdiscord.herokuapp.com/'>Discourse (Faux Discord)</a></h2>
     <p>Discourse is a clone of the popular chat-app, Discord. Discourse allows users to join servers, make friends, and chat with each other, all in real-time.</p>
     <p>The source code for this project can be found <a href="https://github.com/monkwire/FS_Project_Discourse">here</a>.</p>
     <h2><a href='https://cubberd.herokuapp.com/'>Cubberd</a></h2>
     <p>Cubberd in a recipe finder that helps you minimize your shopping and food waste. To find a recipe on Cubberd, users input the ingredients that they have in their kitchen, and whether they want to search for recipes that maximize the use of already available ingredients or minimize the number of ingredients that must be shopped for.</p>
-    <p>The source code can be found <a href="https://github.com/monkwire/Cubberd">here</a>.</p>
+    <p>The source code can be found <a href="https://github.com/monkwire/Cubberd">here</a>.</p>-->
     <h2><a href="/wordle_solver">Wordle Solver</a></h2>
     <p>This is a program that can help you cheat at Wordle.</p>
     <p>Like Wordle, this program uses two word banks: a bank of common words and a bank of all words. Common words are more likely to be solutions, but all words can be used as guesses. Both banks are loaded with the page so that this tool is usable offline.</p>
-    <p>This is a fairly simple Wordle helper, and I have some ideas as to how to improve upon it. Often, the most efficient way to play wordle is to guess words that you <i>know</i> will not be the solution, but that will limit the number of overall guesses you need to make. I would like to add a "suggested word" feature, which finds words that provide the most information for future guesses.</p>
+    <p>This is a fairly simple Wordle helper, aNd I have some ideas as to how to improve upon it. Often, the most efficient way to play wordle is to guess words that you <i>know</i> will not be the solution, but that will limit the number of overall guesses you need to make. I would like to add a "suggested word" feature, which finds words that provide the most information for future guesses.</p>
     <p>Code for the Wordle solver can be found <a href="https://github.com/monkwire/professional_site/blob/main/public/scripts/wordle_solver.js">here</a>.</p>
     <h2><a href="/sudoku">Sudoku</a></h2>
     <p>This is a sudoku player. Generating quality Sudoku puzzles isn't something I've figured out how to do yet, so until then, the puzzles on my site come from <a href="www.krazydad.com">krazydad.com</a>.</p>
